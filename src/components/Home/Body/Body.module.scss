@@ -1,0 +1,79 @@
+.block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 110px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $max-width;
+}
+
+.message {
+  margin-top: 20px;
+}
+
+.title {
+  color: $b-blue;
+  font-weight: 600;
+  font-size: 5rem;
+  margin-bottom: 10px;
+  line-height: 85px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.subtitle {
+  padding-top: 20px;
+  color: #65686c;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+}
+
+.downloadButton {
+  @extend .mainButton;
+  background-color: $b-blue;
+}
+
+.downloadButtonText {
+  font-weight: 600;
+  color: $ui-white;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.loginButton {
+  @extend .mainButton;
+  background-color: #e2e5e9;
+}
+
+.loginButtonText {
+  font-weight: 600;
+  color: $ui-black;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.caption {
+  padding-top: 20px;
+  line-height: 16px;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  color: #65686c;
+  margin: 0;
+}

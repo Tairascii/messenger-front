@@ -12,9 +12,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'www.gstatic.com' },
-      { protocol: 'https', hostname: 'ssl.gstatic.com' },
-      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: 'static.xx.fbcdn.net' },
     ],
   },
   sassOptions: {

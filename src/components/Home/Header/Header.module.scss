@@ -1,0 +1,42 @@
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $max-width;
+}
+
+.navLink {
+  text-decoration: none;
+  margin: 0 15px;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: $b-blue;
+    text-underline-offset: 6px;
+  }
+}
+
+.navLinkText {
+  display: inline;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  color: $ui-black;
+  margin: 0;
+}
+
+.logo {
+  display: block;
+}
