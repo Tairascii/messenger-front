@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'static.xx.fbcdn.net' },
+      { protocol: 'https', hostname: 'scontent.fala3-2.fna.fbcdn.net' },
+      { protocol: 'https', hostname: 'scontent.fala11-1.fna.fbcdn.net' },
     ],
   },
   sassOptions: {
