@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 80px;
+  padding-bottom: 110px;
 }
 
 .wrapper {
@@ -24,10 +25,10 @@
 }
 
 .subtitle {
-  padding-top: 20px;
+  padding-top: 28px;
   color: #65686c;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 18px;
   line-height: 26px;
   letter-spacing: -0.01em;
   margin: 0;
@@ -36,12 +37,14 @@
 .buttons {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 32px;
   gap: 20px;
 }
 
 .loginButton {
   @extend .mainButton;
+  padding: 4px 20px;
+  height: 42px;
   background-color: $b-blue;
 }
 
@@ -62,4 +65,60 @@
   &:hover {
     text-decoration: underline;
   }
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.input {
+  font-size: 13px;
+  font-weight: 400;
+  height: 36px;
+  padding: 8px 16px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  box-sizing: border-box;
+  border: none;
+  background-color: #0000000a;
+  border-radius: 10px;
+  outline: none;
+
+  &:active,
+  &:focus {
+    border: 1px solid $b-blue;
+  }
+}
+
+.keep {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.checkboxText {
+  color: #65686c;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 18px;
+}
+
+.apps {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
