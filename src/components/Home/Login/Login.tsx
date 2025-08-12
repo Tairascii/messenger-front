@@ -61,7 +61,7 @@ const Login = () => {
                 width={130}
                 height={44}
                 alt="apple"
-                src="https://scontent.fala3-2.fna.fbcdn.net/v/t39.8562-6/119597221_2801552506611915_4465041091818364564_n.svg?_nc_cat=1&ccb=1-7&_nc_sid=f537c7&_nc_ohc=DvyCEehbtvAQ7kNvwErgeG-&_nc_oc=AdmZQS1q9-IhnqZp5wIhUWNC7kOVQWmk65X6hIk-SbiXvLidy_Y9FiANXHJs4aYNQ5U&_nc_zt=14&_nc_ht=scontent.fala3-2.fna&_nc_gid=exLTHSRumF_ad1OxQirFuQ&oh=00_AfUd_IEbVeKjc8gA0CEqjx8bovnC32e9hszzrzTwC38ApA&oe=689AA875"
+                src="https://scontent.fala11-1.fna.fbcdn.net/v/t39.8562-6/119599245_978121086037976_8208486235252366867_n.svg?_nc_cat=101&ccb=1-7&_nc_sid=f537c7&_nc_ohc=hyUmygS7IwYQ7kNvwHmuFrp&_nc_oc=AdnPF67SyxcqcqnBURaO27lr0TGWlwNAhLR2mw19O975tB74utKGhvBqenEk69ksivY&_nc_zt=14&_nc_ht=scontent.fala11-1.fna&_nc_gid=n2_DX8P6UE6hy59HmqUUDw&oh=00_AfW5StiBhKVMK6c86Sio1jMCpiEnMQS8dv8Uzr9_EYR_ew&oe=68A13B91"
               />
             </a>
             <a

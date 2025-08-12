@@ -1,0 +1,37 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 240px;
+  padding-right: 4px;
+  height: 100%;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: #efefef;
+  }
+}
+
+.active {
+  background-color: #e8e8e8;
+}
+
+.icon {
+  height: 20px;
+  padding: 4px;
+}
+
+.title {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  color: $ui-black;
+}
