@@ -8,7 +8,7 @@ const SideMenu = () => {
     <div className={styles.block}>
       <nav className={styles.menuLinks}>
         {MenuLinks.map((link) => {
-          const isActive = link.id == 'chats'
+          const isActive = link.id == 'chats' // todo
           const iconColor = isActive ? '#000' : '#65676b'
           const Icon = link.icon
           return (
