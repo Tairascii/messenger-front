@@ -1,7 +1,15 @@
+'use client'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { URLEnum } from '@/enums/url'
 import styles from './Body.module.scss'
 
 const Body = () => {
+  const router = useRouter()
+  const onLogInClick = () => {
+    router.push(URLEnum.HOME)
+  }
+
   return (
     <div className={styles.block}>
       <div className={styles.wrapper}>
@@ -15,7 +23,7 @@ const Body = () => {
             <button className={styles.downloadButton}>
               <p className={styles.downloadButtonText}>Download for macOS</p>
             </button>
-            <button className={styles.loginButton}>
+            <button className={styles.loginButton} onClick={onLogInClick}>
               <p className={styles.loginButtonText}>Log in</p>
             </button>
           </div>
