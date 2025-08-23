@@ -13,7 +13,7 @@ export const signIn = async ({
   const response = await axiosConfig({
     url: getApiPath({
       version: ApiVersionEnum.V1,
-      service: '', //todo
+      service: ApiServiceEnum.User,
       path: '/auth/sign-in',
     }),
     method: 'POST',

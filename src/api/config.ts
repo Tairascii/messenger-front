@@ -2,6 +2,7 @@
 import https from 'https'
 import { getCookie } from 'typescript-cookie'
 import axios, { AxiosInstance } from 'axios'
+import { accessTokenCookieKey } from '@/constants/keys'
 
 // import { refreshToken } from "@/api/auth";
 
@@ -18,7 +19,7 @@ const axiosConfig: AxiosInstance = axios.create({
 })
 
 axiosConfig.interceptors.request.use((config) => {
-  const accessToken = getCookie('accessToken')
+  const accessToken = getCookie(accessTokenCookieKey)
 
   if (accessToken) {
     // eslint-disable-next-line no-param-reassign

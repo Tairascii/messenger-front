@@ -1,12 +1,10 @@
 export interface Chat {
   id: string
-  user: {
-    name: string
-    profilePicture: string
-  }
+  picture: string | null
+  title: string
   lastMessage: {
     text: string
     createdAt: string
     senderID: string
-  }
+  } | null
 }

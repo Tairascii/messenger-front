@@ -18,6 +18,22 @@ const ChatLine = ({ chat }: ChatLineProps) => {
   }
   // todo
   const isSelected = true
+  const hasLastMessage = !!chat.lastMessage
+  const getLastMessageText = (): string => {
+    if (hasLastMessage) {
+      return `${chat.lastMessage?.text} · ${chat.lastMessage?.createdAt}`
+    }
+    return `no messages yet`
+  }
+
+  const getChatPicture = (): string => {
+    if(chat.picture) {
+      return chat.picture
+    }
+
+    return ''
+  }
+
   return (
     <div
       className={clsx(styles.block, { [styles.selected]: isSelected })}
@@ -27,16 +43,16 @@ const ChatLine = ({ chat }: ChatLineProps) => {
     >
       <Image
         alt="friendpfp"
-        src={chat.user.profilePicture}
+        src={getChatPicture()}
         quality={100}
         width={48}
         height={48}
         className={styles.friendpfp}
       />
       <div className={styles.info}>
-        <span className={styles.userName}>{chat.user.name}</span>
+        <span className={styles.userName}>{chat.title}</span>
         <span className={styles.lastMessageText}>
-          {chat.lastMessage.text} · {chat.lastMessage.createdAt}
+          {getLastMessageText()}
         </span>
       </div>
     </div>

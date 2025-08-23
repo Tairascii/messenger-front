@@ -10,7 +10,7 @@ export const getApiPath = ({
   path,
 }: GetApiPathParams): string => {
   //TODO add service
-  const finalPath = `${process.env.NEXT_PUBLIC_API_URL}/api/${version}/${path}`
+  const finalPath = `${service}api/${version}${path}`
 
   return finalPath
 }
