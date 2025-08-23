@@ -21,6 +21,15 @@ const Chat = ({ userID, userProfilePicture, userName }: ChatProps) => {
       isEdited: false,
       createdAt: '19:03',
       senderID: '1',
+      isFromMe: true,
+    },
+    {
+      id: 2,
+      text: 'hi',
+      isEdited: false,
+      createdAt: '19:03',
+      senderID: '1',
+      isFromMe: false,
     },
   ])
   const [message, setMessage] = useState('')

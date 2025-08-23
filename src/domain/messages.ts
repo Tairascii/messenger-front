@@ -4,4 +4,5 @@ export interface Message {
   isEdited: boolean
   createdAt: string
   senderID: string
+  isFromMe: boolean
 }

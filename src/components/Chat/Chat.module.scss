@@ -73,7 +73,8 @@
   flex-direction: column;
   box-sizing: border-box;
   flex: 1;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-end;
   padding: 0 8px;
+  gap: 2px;
 }
