@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 import { Chat } from '@/domain/chats'
 import styles from './ChatLine.module.scss'
 import clsx from 'clsx'
@@ -13,11 +13,14 @@ interface ChatLineProps {
 
 const ChatLine = ({ chat }: ChatLineProps) => {
   const router = useRouter()
+  const params = useParams()
+  const chatID = params.slug?.at(0)
+
   const onChatSelect = () => {
     router.push(`${URLEnum.CHATS}/${chat.id}`, { scroll: false })
   }
-  // todo
-  const isSelected = true
+
+  const isSelected = chatID === chat.id
   const hasLastMessage = !!chat.lastMessage
   const getLastMessageText = (): string => {
     if (hasLastMessage) {
@@ -27,7 +30,7 @@ const ChatLine = ({ chat }: ChatLineProps) => {
   }
 
   const getChatPicture = (): string => {
-    if(chat.picture) {
+    if (chat.picture) {
       return chat.picture
     }
 
@@ -51,9 +54,7 @@ const ChatLine = ({ chat }: ChatLineProps) => {
       />
       <div className={styles.info}>
         <span className={styles.userName}>{chat.title}</span>
-        <span className={styles.lastMessageText}>
-          {getLastMessageText()}
-        </span>
+        <span className={styles.lastMessageText}>{getLastMessageText()}</span>
       </div>
     </div>
   )
