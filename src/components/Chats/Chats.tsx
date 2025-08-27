@@ -25,7 +25,7 @@ const Chats = () => {
           userID={''}
           userProfilePicture={mockChat.userProfilePicture}
           userName={mockChat.userName}
-          chatID={''}
+          chatID={chatID}
         />
       ) : (
         <NotSelected />

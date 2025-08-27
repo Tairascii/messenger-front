@@ -2,9 +2,10 @@
 import Image from 'next/image'
 import styles from './Chat.module.scss'
 import MoreIcon from '@/icons/MoreIcon'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Message } from '@/domain/messages'
 import { MessageBubble } from '../MessageBubble'
+import { connectToChat } from '@/api/chats/connectToChat'
 
 interface ChatProps {
   userID: string
@@ -13,7 +14,8 @@ interface ChatProps {
   chatID: string
 }
 
-const Chat = ({ userID, userProfilePicture, userName }: ChatProps) => {
+const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
+  const connRef = useRef<WebSocket | null>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -33,6 +35,34 @@ const Chat = ({ userID, userProfilePicture, userName }: ChatProps) => {
     },
   ])
   const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    const conn = connectToChat(chatID)
+    connRef.current = conn
+
+    conn.onopen = (ev) => {
+      console.log('connected')
+    }
+
+    conn.onmessage = (ev) => {
+      console.log(ev)
+    }
+
+    conn.onclose = (ev) => {
+      console.log('closed')
+    }
+  
+    return () => conn.close()
+  }, [])
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      connRef.current?.send(`{ "text": "${message}" }`)
+      console.log('Enter pressed with value:')
+      e.preventDefault()
+    }
+  }
+
   return (
     <div className={styles.block}>
       <div className={styles.header}>
@@ -62,6 +92,7 @@ const Chat = ({ userID, userProfilePicture, userName }: ChatProps) => {
           onChange={(e) => setMessage(e.target.value)}
           className={styles.textarea}
           placeholder="Aa"
+          onKeyDown={onKeyDown}
         />
       </div>
     </div>
