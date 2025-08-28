@@ -15,7 +15,7 @@ interface ChatProps {
 }
 
 const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
-  const connRef = useRef<WebSocket | null>(null);
+  const connRef = useRef<WebSocket | null>(null)
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -45,21 +45,32 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
     }
 
     conn.onmessage = (ev) => {
-      console.log(ev)
+      const msg = JSON.parse(ev.data)
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: msg.id,
+          text: msg.text,
+          isEdited: msg.isEdited,
+          createdAt: msg.createdAt,
+          senderID: msg.senderID,
+          isFromMe: true, // todo
+        },
+      ])
     }
 
     conn.onclose = (ev) => {
       console.log('closed')
     }
-  
+
     return () => conn.close()
   }, [])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
       connRef.current?.send(`{ "text": "${message}" }`)
-      console.log('Enter pressed with value:')
       e.preventDefault()
+      setMessage('')
     }
   }
 
