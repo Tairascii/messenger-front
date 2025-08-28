@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Message } from '@/domain/messages'
 import { MessageBubble } from '../MessageBubble'
 import { connectToChat } from '@/api/chats/connectToChat'
+import { useUserStore } from '@/stores/user/useUserStore'
 
 interface ChatProps {
   userID: string
@@ -15,25 +16,9 @@ interface ChatProps {
 }
 
 const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
+  const { profile } = useUserStore((state) => state)
   const connRef = useRef<WebSocket | null>(null)
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: 'hi',
-      isEdited: false,
-      createdAt: '19:03',
-      senderID: '1',
-      isFromMe: true,
-    },
-    {
-      id: 2,
-      text: 'hi',
-      isEdited: false,
-      createdAt: '19:03',
-      senderID: '1',
-      isFromMe: false,
-    },
-  ])
+  const [messages, setMessages] = useState<Message[]>([])
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -54,7 +39,7 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
           isEdited: msg.isEdited,
           createdAt: msg.createdAt,
           senderID: msg.senderID,
-          isFromMe: true, // todo
+          isFromMe: msg.senderID === profile.id,
         },
       ])
     }
