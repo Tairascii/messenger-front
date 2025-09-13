@@ -17,6 +17,7 @@ const ChatLine = ({ chat }: ChatLineProps) => {
   const chatID = params.slug?.at(0)
 
   const onChatSelect = () => {
+    if (chatID === chat.id) return
     router.push(`${URLEnum.CHATS}/${chat.id}`, { scroll: false })
   }
 

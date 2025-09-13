@@ -70,11 +70,11 @@
 
 .messages {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   box-sizing: border-box;
   flex: 1;
   align-items: flex-start;
-  justify-content: flex-end;
   padding: 0 8px;
   gap: 2px;
+  overflow-y: scroll;
 }

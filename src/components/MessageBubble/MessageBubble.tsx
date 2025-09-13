@@ -4,10 +4,17 @@ import clsx from 'clsx'
 
 interface MessageBubbleProps {
   message: Message
+  userID: string
 }
-const MessageBubble = ({ message }: MessageBubbleProps) => {
+const MessageBubble = ({ message, userID }: MessageBubbleProps) => {
+  if (!userID) return
+
   return (
-    <div className={clsx(styles.block, { [styles.mine]: message.isFromMe })}>
+    <div
+      className={clsx(styles.block, {
+        [styles.mine]: message.senderID === userID,
+      })}
+    >
       <span className={styles.text}>{message.text}</span>
     </div>
   )

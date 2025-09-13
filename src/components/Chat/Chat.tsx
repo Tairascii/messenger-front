@@ -7,6 +7,7 @@ import { Message } from '@/domain/messages'
 import { MessageBubble } from '../MessageBubble'
 import { connectToChat } from '@/api/chats/connectToChat'
 import { useUserStore } from '@/stores/user/useUserStore'
+import { getMessages } from '@/api/messages/getMessages'
 
 interface ChatProps {
   userID: string
@@ -22,7 +23,14 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    if(!profile.id) return
+    const get = async () => {
+      const msgs = await getMessages(chatID)
+      setMessages(msgs.reverse())
+    }
+    get()
+  }, [])
+
+  useEffect(() => {
     const conn = connectToChat(chatID)
     connRef.current = conn
 
@@ -32,17 +40,7 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
 
     conn.onmessage = (ev) => {
       const msg = JSON.parse(ev.data)
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: msg.id,
-          text: msg.text,
-          isEdited: msg.isEdited,
-          createdAt: msg.createdAt,
-          senderID: msg.senderID,
-          isFromMe: msg.senderID === profile.id,
-        },
-      ])
+      setMessages((prev) => [msg, ...prev])
     }
 
     conn.onclose = (ev) => {
@@ -50,7 +48,7 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
     }
 
     return () => conn.close()
-  }, [profile])
+  }, [])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
@@ -80,7 +78,9 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
       </div>
       <div className={styles.messages}>
         {messages.map((msg) => {
-          return <MessageBubble key={msg.id} message={msg} />
+          return (
+            <MessageBubble key={msg.id} userID={profile.id} message={msg} />
+          )
         })}
       </div>
       <div className={styles.actions}>
