@@ -14,5 +14,5 @@ export const getChats = async (): Promise<Chat[]> => {
     method: 'GET',
   })
 
-  return response.data
+  return response.data.chats
 }

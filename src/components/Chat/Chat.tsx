@@ -22,6 +22,7 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
+    if(!profile.id) return
     const conn = connectToChat(chatID)
     connRef.current = conn
 
@@ -49,7 +50,7 @@ const Chat = ({ userID, userProfilePicture, userName, chatID }: ChatProps) => {
     }
 
     return () => conn.close()
-  }, [])
+  }, [profile])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {

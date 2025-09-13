@@ -9,7 +9,7 @@ export const getProfile = async (): Promise<User> => {
     url: getApiPath({
       version: ApiVersionEnum.V1,
       service: ApiServiceEnum.User,
-      path: '/user',
+      path: '/profile',
     }),
     method: 'GET',
   })
