@@ -4,6 +4,6 @@ export interface Tokens {
 }
 
 export interface SignInData {
-    email: string
-    password: string
+  email: string
+  password: string
 }
