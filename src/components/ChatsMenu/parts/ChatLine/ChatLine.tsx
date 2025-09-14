@@ -6,15 +6,19 @@ import { Chat } from '@/domain/chats'
 import styles from './ChatLine.module.scss'
 import clsx from 'clsx'
 import { URLEnum } from '@/enums/url'
+import { messageTime } from '@/utils/messageTime'
+import { useUserStore } from '@/stores/user/useUserStore'
 
 interface ChatLineProps {
   chat: Chat
 }
 
 const ChatLine = ({ chat }: ChatLineProps) => {
+  const { profile } = useUserStore((state) => state)
   const router = useRouter()
   const params = useParams()
   const chatID = params.slug?.at(0)
+  if (!profile.id) return
 
   const onChatSelect = () => {
     if (chatID === chat.id) return
@@ -24,10 +28,17 @@ const ChatLine = ({ chat }: ChatLineProps) => {
   const isSelected = chatID === chat.id
   const hasLastMessage = !!chat.lastMessage
   const getLastMessageText = (): string => {
-    if (hasLastMessage) {
-      return `${chat.lastMessage?.text} · ${chat.lastMessage?.createdAt}`
+    if (!hasLastMessage) {
+      return `no messages yet`
     }
-    return `no messages yet`
+    let text = ''
+    if (chat.lastMessage?.senderID === profile.id) {
+      text += `You: `
+    }
+    return (
+      text +
+      `${chat.lastMessage?.text} · ${messageTime(chat.lastMessage?.createdAt)}`
+    )
   }
 
   const getChatPicture = (): string => {
